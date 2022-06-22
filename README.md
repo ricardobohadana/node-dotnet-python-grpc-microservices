@@ -2,7 +2,7 @@
 
 A containerized Node.js API acting as a client gateway communicating with two independents microservices (a Python and a .NET gRPC servers).
 
-## 🛠️ Abrir e rodar o projeto
+## 🛠️ Open, Run and Test project
 
 This project runs inside a docker network with four distincts docker containers, one for each microservice and the last one for the PostgreSQL database. Steps to run this project:
 
@@ -18,10 +18,6 @@ This project runs inside a docker network with four distincts docker containers,
 <div style="padding: 0.5rem">
     <img align="center" height="30" width="40" src="https://grpc.io/img/logos/grpc-icon-color.png">
     gRPC
-</div>
-<div style="padding: 0.5rem">
-    <img align="center" height="30" width="40" src="https://plugins.jetbrains.com/files/14004/186107/icon/pluginIcon.png">
-    Protocol Buffers
 </div>
 <div style="padding: 0.5rem">
     <img align="center" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
