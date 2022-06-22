@@ -1,0 +1,8 @@
+version: "3.7"
+
+services:
+  node-gateway:
+    build: ./
+    container_name: node-api-gateway
+    ports:
+      - "81:81"

@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  postgres-db-grpc-dotnet:
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "docker"
+      POSGRES_DB: "grpcUsersDb"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  python-stock-grpc:
+    build: ./asset-service
+    container_name: python-stock-grpc
+    ports:
+      - "80:80"
+
+  node-gateway-api:
+    build: ./gateway
+    container_name: node-gateway-api
+    ports:
+      - "81:81"
+
+  dotnet-user-grpc:
+    build: ./user-service/GrpcServer
+    depends_on:
+      postgres-db-grpc-dotnet:
+        condition: service_healthy
+    container_name: dotnet-user-grpc
+    ports:
+      - "82:82"
+
+volumes:
+  db_volume:

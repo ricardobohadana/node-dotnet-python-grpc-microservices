@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+message Ticker {
+    string ticker = 1;
+}
+
+message StockData {
+    float High = 1; 
+    float Low = 2;
+    float Open = 3;
+    float Close = 4;
+    string Date = 5;
+}
+
+message GetStockLastPriceResponse {
+    string ticker = 1;
+    float price = 2;
+}
+
+
+message GetStockHistoryResponse{
+    string ticker = 1;
+    repeated StockData data = 2;
+}
+
+service Stock {
+    rpc GetStockLastPrice(Ticker) returns (GetStockLastPriceResponse) {}
+    rpc GetStockHistoryPrice(Ticker) returns (GetStockHistoryResponse) {}
+}
